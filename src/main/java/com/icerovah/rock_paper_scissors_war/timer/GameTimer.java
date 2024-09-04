@@ -2,7 +2,7 @@ package com.icerovah.rock_paper_scissors_war.timer;
 
 import com.icerovah.rock_paper_scissors_war.service.CanvasService;
 import com.icerovah.rock_paper_scissors_war.service.ContestantService;
-import com.icerovah.rock_paper_scissors_war.service.ScheduleService;
+import com.icerovah.rock_paper_scissors_war.service.GameService;
 
 public class GameTimer implements Runnable {
 
@@ -11,8 +11,8 @@ public class GameTimer implements Runnable {
         ContestantService.move();
         CanvasService.draw();
 
-        if (ContestantService.isGameOver()) {
-            ScheduleService.close();
+        if (GameService.isGameOver()) {
+            GameService.gameOver();
         }
     }
 

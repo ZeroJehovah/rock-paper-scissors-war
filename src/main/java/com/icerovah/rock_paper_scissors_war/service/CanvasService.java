@@ -1,6 +1,6 @@
 package com.icerovah.rock_paper_scissors_war.service;
 
-import static com.icerovah.rock_paper_scissors_war.consts.Components.*;
+import static com.icerovah.rock_paper_scissors_war.consts.UiConstants.*;
 
 public class CanvasService {
 

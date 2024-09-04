@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class Contestant {
 
-    private RockPaperScissorsEnum type;
+    private RockPaperScissorsEnum camp;
 
     /**
      * 精确坐标X
@@ -43,12 +43,21 @@ public class Contestant {
     /**
      * 加速度
      */
-    private float acceleration;
+    private double acceleration;
 
     /**
      * 加速度方向
      */
-    private float accelerationDirection;
+    private double accelerationDirection;
+
+    /**
+     * 是否锁定坐标(在边缘碰撞后锁定)
+     */
+    private boolean lockCoordinate;
+
+    public void lockCoordinate() {
+        lockCoordinate = Boolean.TRUE;
+    }
 
     /**
      * 绘图坐标X
@@ -67,11 +76,20 @@ public class Contestant {
     public void backUpCoordinates() {
         lastCoordinateX = coordinateX;
         lastCoordinateY = coordinateY;
+        lockCoordinate = Boolean.FALSE;
     }
 
     public void move() {
         coordinateX = lastCoordinateX + velocity * Math.cos(direction);
         coordinateY = lastCoordinateY + velocity * Math.sin(direction);
+    }
+
+    public void updateDirectionAndVelocity() {
+        double newDirectionX = Math.cos(direction) * velocity + Math.cos(accelerationDirection) * acceleration;
+        double newDirectionY = Math.sin(direction) * velocity + Math.sin(accelerationDirection) * acceleration;
+        this.direction = Math.atan2(newDirectionY, newDirectionX);
+//        double newVelocity = Math.sqrt(Math.pow(newDirectionX, 2) + Math.pow(newDirectionY, 2));
+//        this.velocity = Math.min(newVelocity, Config.CONTESTANT_VELOCITY);
     }
 
 }

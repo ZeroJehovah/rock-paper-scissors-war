@@ -2,8 +2,8 @@ package com.icerovah.rock_paper_scissors_war.component;
 
 import java.awt.*;
 
-import static com.icerovah.rock_paper_scissors_war.consts.Components.*;
-import static com.icerovah.rock_paper_scissors_war.consts.Components.CONTESTANTS;
+import static com.icerovah.rock_paper_scissors_war.consts.UiConstants.*;
+import static com.icerovah.rock_paper_scissors_war.consts.UiConstants.CONTESTANTS;
 import static com.icerovah.rock_paper_scissors_war.consts.Config.CONTESTANT_SIZE;
 
 public class Canvas extends java.awt.Canvas {
@@ -12,7 +12,7 @@ public class Canvas extends java.awt.Canvas {
     public void paint(Graphics graphics) {
         graphics.clearRect(0, 0, CANVAS.getWidth(), CANVAS.getHeight());
         for (Contestant contestant : CONTESTANTS) {
-            graphics.drawImage(contestant.getType().getImage(), contestant.getPositionX(), contestant.getPositionY(), CONTESTANT_SIZE, CONTESTANT_SIZE, this);
+            graphics.drawImage(contestant.getCamp().getImage(), contestant.getPositionX(), contestant.getPositionY(), CONTESTANT_SIZE, CONTESTANT_SIZE, this);
         }
     }
 
